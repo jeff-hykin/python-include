@@ -4,7 +4,7 @@
 
 # Use
 
-```
+```python
 import include
 include.file("./relative/path/to/code.py", globals())
 
