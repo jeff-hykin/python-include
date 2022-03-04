@@ -19,44 +19,18 @@ class HackySystemPathList(list):
         sys.path = ___link_to_real_system_path___
         return output
 
-# class HackySystemModules(dict):
-#     def __getitem__(self, item):
-#         print('getting item',item)
-#         # return the injected list
-#         return super().__getitem__(item)
-
-#     def __setitem__(self, *items):
-#         print('setting item',*items)
-#         try:
-#             upstack = 1
-#             caller_relative_filepath = inspect.stack()[upstack][1]
-#             parent_path = dirname(abspath(caller_relative_filepath))
-#             print('parent_path = ', parent_path)
-#         except:
-#             print('failed to get upstack')
-#         # return the injected list
-#         return super().__setitem__(*items)
-
-# sys.modules = HackySystemModules(sys.modules)
-
-def my_globals():
-    return globals()
-
 def file(path, globals=None):
+    """
+        Examples:
+            hello = include.file("./path/to/file/with/hello/func/code.py", {"__file__":__file__}).hello
+            # import [*everything*] from-anywhere (does pollute global namespace)
+            include.file("./path/to/file/with/hello/func/code.py", globals())
+        Summary:
+            Use a relative or absolute path to import all of the globals from that file into the current file
+            This will not run code more than once, even if it is included multiple times
+    """
     global ___link_to_real_system_path___
     global ___included_modules___
-    '''Use a relative or absolute path to import all of the globals from that file into the current file
-    This will not run code more than once, even if it is included multiple times
-
-    :param str path: The path to the file you want to include
-    :param int globals: put globals() unless you know what you're doing
-    
-    :return module: The module object created from importing the file
-    Usage::
-      >>> import include
-      >>> include.file('./folder/file.py', globals())
-      >>> # you now have access to all the funcs/vars from 'file.py'
-    '''
     your_globals = globals
     absolute_import_path = None
     is_absolute_path = isabs(path)
