@@ -1,9 +1,12 @@
+from __future__ import absolute_import
+
 import sys
 import os
 import inspect
 import textwrap
 import importlib
 from os.path import isabs, isfile, isdir, join, dirname, basename, exists, splitext, relpath, abspath, normpath
+
 
 ModuleClass = type(sys)
 dont_override = ( '__name__', '__doc__', '__package__', '__loader__', '__spec__', '__annotations__', '__builtins__', '__file__', )
@@ -22,9 +25,10 @@ class HackySystemPathList(list):
 def file(path, globals=None):
     """
         Examples:
-            hello = include.file("./path/to/file/with/hello/func/code.py", {"__file__":__file__}).hello
+            import python_inlcude
+            hello = python_inlcude.file("./path/to/file/with/hello/func/code.py", {"__file__":__file__}).hello
             # import [*everything*] from-anywhere (does pollute global namespace)
-            include.file("./path/to/file/with/hello/func/code.py", globals())
+            python_inlcude.file("./path/to/file/with/hello/func/code.py", globals())
         Summary:
             Use a relative or absolute path to import all of the globals from that file into the current file
             This will not run code more than once, even if it is included multiple times

@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "your_package_name"
-version = "0.0.1"
-description = "YOUR_DESCRIPTION"
+name = "python_include"
+version = "2.0.0"
+description = "Relative imports that actually work"
 authors=[]
 
 [tool.extra]
-author='YOUR_NAME_14057'
-author_email='YOUR_EMAIL'
-url='YOUR_GIT_REPO_URL'
+author='Jeff Hykin'
+author_email='jeff.hykin@gmail.com'
+url='https://github.com/jeff-hykin/python-include'
 license = "MIT"
 
 [tool.poetry.dependencies]
