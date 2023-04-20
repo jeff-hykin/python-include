@@ -9,6 +9,7 @@ author='Jeff Hykin'
 author_email='jeff.hykin@gmail.com'
 url='https://github.com/jeff-hykin/python-include'
 license = "MIT"
+main_module_path = "main/python_include"
 
 [tool.poetry.dependencies]
 python = ">=3.7,<3.12"
